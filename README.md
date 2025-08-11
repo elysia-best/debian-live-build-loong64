@@ -4,8 +4,9 @@ Have a look at [Debian Live Manual](https://live-team.pages.debian.net/live-manu
 
 # Download prebuilt images
 
-Download the latest prebuilt image from [here](https://nightly.link/elysia-best/debian-live-build-loong/workflows/build/master/Debian%20loong64%20live%20cd.zip).
+**Nightly Builds**: Download the latest prebuilt image from [here](https://nightly.link/elysia-best/debian-live-build-loong/workflows/build/master/Debian%20loong64%20live%20cd.zip).
 
+**Latest Release**: See the release page for details.
 # Build images
 
 ## Install dependencies
