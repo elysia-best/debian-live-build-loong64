@@ -121,8 +121,8 @@ GatewayPorts no
 X11Forwarding no
 X11UseLocalhost yes
 
-# Only allow login for users from ssh/sftponly groups
-AllowGroups ssh sftponly
+# Only allow login for users from ssh/sftponly groups, enable if needed
+# AllowGroups ssh sftponly
 
 # Misc. configuration
 # ===================
