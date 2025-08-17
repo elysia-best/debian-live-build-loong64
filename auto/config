@@ -91,10 +91,10 @@ fi
 debian_keyring="/usr/share/keyrings/debian-archive-keyring.gpg"
 case "$arch" in
     amd64)
-	# lb_opts="$lb_opts --debian-installer live"
+	lb_opts="$lb_opts --debian-installer live"
     ;;
     i386)
-	# lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
+	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
 	lb_opts="$lb_opts --linux-flavours 686-pae"
     ;;
     arm64)
@@ -104,7 +104,7 @@ case "$arch" in
 	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
     ;;
 	loong64)
-	lb_opts="$lb_opts --bootloaders grub-efi --uefi-secure-boot disable"
+	lb_opts="$lb_opts --debian-installer live --bootloaders grub-efi --uefi-secure-boot disable"
 	if [ "$country_code" == "CN" ]; then
 		# public_debian_mirror=http://mirrors.aliyun.com/debian-ports
 		# debian_mirror=http://mirrors.aliyun.com/debian-ports
