@@ -12,9 +12,14 @@ on:
   workflow_dispatch:
 jobs:
   debian:
-    name: Build loong64 iso
+    name: Build loong64 iso image
     runs-on: ubuntu-latest
     permissions: write-all
+    strategy:
+      matrix:
+        variant:
+          - kde
+          - minimal
     steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
@@ -49,7 +54,7 @@ jobs:
             curl -fsSL https://salsa.debian.org/-/project/100777/uploads/d513b2c78c2412c7bfd33651eaced2d7/live-build_20250605_all.deb -o live-build.deb
             apt install -y ./live-build.deb
             rm live-build.deb
-            bash -i ./build.sh
+            bash -i ./build.sh --variant ${{ matrix.variant }}
             
             
       - name: Artifact
