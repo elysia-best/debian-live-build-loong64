@@ -28,21 +28,24 @@ calamares-settings-debian-loong
 
 plymouth
 
-
-# Some applications
+# Web applications
 firefox
 firefox-l10n-zh-cn
 
 # Input Methods
 fcitx5
 fcitx5-chinese-addons
+fcitx5-module-cloudpinyin
+fcitx5-frontend-gtk2 
+fcitx5-frontend-gtk3 
+fcitx5-frontend-gtk4
 
 # CJK Fonts
 fonts-noto-cjk
 
 # liblol
 # If not using kernel from AOSC, you need to install liblol-dkms
-# liblol-dkms
+liblol-dkms
 liblol
 
 # lat
