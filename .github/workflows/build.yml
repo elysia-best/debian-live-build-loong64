@@ -19,7 +19,6 @@ jobs:
       matrix:
         variant:
           - kde
-          - minimal
     steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
