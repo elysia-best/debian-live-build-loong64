@@ -49,7 +49,8 @@ liblol-dkms
 liblol
 
 # lat
-lat
+latx-amd64
+latx-i386
 
 # Disk
 gparted
