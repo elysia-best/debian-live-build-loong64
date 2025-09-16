@@ -45,8 +45,8 @@ fonts-noto-cjk
 
 # liblol
 # If not using kernel from AOSC, you need to install liblol-dkms
-# liblol-dkms
-# liblol
+liblol-dkms
+liblol
 
 # lat
 latx-amd64
