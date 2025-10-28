@@ -13,7 +13,7 @@ Have a look at [Debian Live Manual](https://live-team.pages.debian.net/live-manu
 
 ```bash
 sudo apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
-curl -fsSL https://salsa.debian.org/-/project/100777/uploads/c51d6e90dd42be715b7f0ee555f84a3a/live-build_20251022_all.deb -o live-build.deb
+curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
 sudo apt install -y ./live-build.deb
 rm live-build.deb
 ```
