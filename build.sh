@@ -214,19 +214,6 @@ if [ -z "$DEBIAN_VERSION" ]; then
 fi
 debug "DEBIAN_VERSION: $DEBIAN_VERSION"
 
-# Check parameters
-debug "HOST_ARCH: $HOST_ARCH"
-echo "Building for $DEBIAN_ARCH on $HOST_ARCH"
-# if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
-# 	case "$HOST_ARCH/$DEBIAN_ARCH" in
-# 	amd64/i386 | i386/amd64) ;;
-# 	*)
-# 		echo "Can't build $DEBIAN_ARCH image on $HOST_ARCH system." >&2
-# 		exit 1
-# 		;;
-# 	esac
-# fi
-
 # Build parameters for lb config
 DEBIAN_CONFIG_OPTS="--distribution $DEBIAN_DIST -- --variant $DEBIAN_VARIANT"
 if [ -n "$OPT_pu" ]; then
@@ -235,6 +222,19 @@ if [ -n "$OPT_pu" ]; then
 fi
 debug "DEBIAN_CONFIG_OPTS: $DEBIAN_CONFIG_OPTS"
 debug "DEBIAN_DIST: $DEBIAN_DIST"
+
+# Check parameters
+debug "HOST_ARCH: $HOST_ARCH"
+if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
+	case "$HOST_ARCH/$DEBIAN_ARCH" in
+	amd64/i386 | i386/amd64) ;;
+	*)
+		DEBIAN_CONFIG_OPTS="$DEBIAN_CONFIG_OPTS --bootstrap-qemu-arch $DEBIAN_ARCH --bootstrap-qemu-static $(readlink -f /usr/bin/qemu-$DEBIAN_ARCH)"
+		echo "Building for $DEBIAN_ARCH on $HOST_ARCH"
+		exit 1
+		;;
+	esac
+fi
 
 # Set sane PATH (cron seems to lack /sbin/ dirs)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

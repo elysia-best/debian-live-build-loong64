@@ -187,6 +187,3 @@ live-build
 # Web commands
 curl
 wget
-
-# QEMU 
-qemu-user

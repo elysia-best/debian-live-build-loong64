@@ -160,7 +160,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free non-free-firmware" \
-	--debootstrap-options "--include=qemu-user,apt-transport-https,ca-certificates,openssl,debian-archive-keyring,debian-ports-archive-keyring --keyring=$debian_keyring" \
+	--debootstrap-options "--include=apt-transport-https,ca-certificates,openssl,debian-archive-keyring,debian-ports-archive-keyring --keyring=$debian_keyring" \
 	--keyring-packages "debian-archive-keyring debian-ports-archive-keyring" \
 	--apt-recommends false \
 	--apt-options "-o Acquire::Check-Valid-Until=false -o DPkg::Options::=\"--force-confnew\" -y" \
