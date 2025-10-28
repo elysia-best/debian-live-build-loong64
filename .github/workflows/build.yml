@@ -38,6 +38,7 @@ jobs:
           apt update
           apt install qemu-user qemu-user-binfmt binfmt-support curl -y
           mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
+          mkdir -p /usr/local/bin
           curl -fsSL -o /usr/local/bin/systemctl-docker https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/refs/heads/master/files/docker/systemctl3.py
           chmod +x /usr/local/bin/systemctl-docker
           /usr/local/bin/systemctl-docker start systemd-binfmt.service
