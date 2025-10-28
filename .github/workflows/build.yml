@@ -55,9 +55,9 @@ jobs:
           sudo apt install -y ./debian-archive-keyring.deb
           rm debian-archive-keyring.deb
 
-          curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb
-          sudo apt install -y ./debian-ports-archive-keyring_2025.04.05_all.deb
-          rm debian-ports-archive-keyring_2025.04.05_all.deb
+          curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb -o debian-ports-archive-keyring.deb
+          sudo apt install -y ./debian-ports-archive-keyring.deb
+          rm debian-ports-archive-keyring.deb
 
       - name: Build loong64 iso image
         run: |
