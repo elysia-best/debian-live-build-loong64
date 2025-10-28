@@ -231,7 +231,6 @@ if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 	*)
 		DEBIAN_CONFIG_OPTS="$DEBIAN_CONFIG_OPTS --bootstrap-qemu-arch $DEBIAN_ARCH --bootstrap-qemu-static $(readlink -f /usr/bin/qemu-$DEBIAN_ARCH)"
 		echo "Building for $DEBIAN_ARCH on $HOST_ARCH"
-		exit 1
 		;;
 	esac
 fi
