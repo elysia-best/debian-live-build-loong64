@@ -36,7 +36,7 @@ jobs:
           cd /tmp
           export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install qemu-user qemu-user-binfmt binfmt-support curl -y
+          apt install qemu-user qemu-user-binfmt binfmt-support curl python3 -y
           mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
           curl -fsSL -o systemctl-docker https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/refs/heads/master/files/docker/systemctl3.py
           chmod +x systemctl-docker
