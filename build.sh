@@ -215,15 +215,16 @@ debug "DEBIAN_VERSION: $DEBIAN_VERSION"
 
 # Check parameters
 debug "HOST_ARCH: $HOST_ARCH"
-if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
-	case "$HOST_ARCH/$DEBIAN_ARCH" in
-	amd64/i386 | i386/amd64) ;;
-	*)
-		echo "Can't build $DEBIAN_ARCH image on $HOST_ARCH system." >&2
-		exit 1
-		;;
-	esac
-fi
+echo "Building for $DEBIAN_ARCH on $HOST_ARCH"
+# if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
+# 	case "$HOST_ARCH/$DEBIAN_ARCH" in
+# 	amd64/i386 | i386/amd64) ;;
+# 	*)
+# 		echo "Can't build $DEBIAN_ARCH image on $HOST_ARCH system." >&2
+# 		exit 1
+# 		;;
+# 	esac
+# fi
 
 # Build parameters for lb config
 DEBIAN_CONFIG_OPTS="--distribution $DEBIAN_DIST -- --variant $DEBIAN_VARIANT"
