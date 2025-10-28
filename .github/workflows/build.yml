@@ -31,14 +31,9 @@ jobs:
       #     remove-dotnet: 'true'
       #     remove-android: 'true'
 
-      - name: Checkout sources
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
-
       - name: Set up loong64 QEMU
         run: |
+          cd /tmp
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install qemu-user qemu-user-binfmt binfmt-support curl -y
@@ -50,6 +45,7 @@ jobs:
 
       - name: Install build dependencies
         run: |
+          cd /tmp
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install git sudo fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
@@ -65,6 +61,12 @@ jobs:
           curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb -o debian-ports-archive-keyring.deb
           apt install -y ./debian-ports-archive-keyring.deb
           rm debian-ports-archive-keyring.deb
+
+      - name: Checkout sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
       - name: Build loong64 iso image
         run: |
