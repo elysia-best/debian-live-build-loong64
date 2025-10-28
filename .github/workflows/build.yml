@@ -48,7 +48,7 @@ jobs:
           sudo apt update
           sudo apt install git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
 
-          curl -fsSL https://salsa.debian.org/-/project/100777/uploads/b3473acb4822b01a94703259c0a7cf79/live-build_20251022_all.deb -o live-build.deb
+          curl -fsSL https://salsa.debian.org/-/project/100777/uploads/c51d6e90dd42be715b7f0ee555f84a3a/live-build_20251022_all.deb -o live-build.deb
           sudo apt install -y ./live-build.deb
           rm live-build.deb
 
