@@ -44,15 +44,25 @@ jobs:
       - name: Install build dependencies
         run: |
           export DEBIAN_FRONTEND=noninteractive
-          export DEBIAN_ARCH=loong64
           sudo apt update
           sudo apt install git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+
           curl -fsSL https://salsa.debian.org/-/project/100777/uploads/d513b2c78c2412c7bfd33651eaced2d7/live-build_20250605_all.deb -o live-build.deb
           sudo apt install -y ./live-build.deb
           rm live-build.deb
+
+          curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2025.1_all.deb -o debian-archive-keyring.deb
+          sudo apt install -y ./debian-archive-keyring.deb
+          rm debian-archive-keyring.deb
+
+          curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb
+          sudo apt install -y ./debian-ports-archive-keyring_2025.04.05_all.deb
+          rm debian-ports-archive-keyring_2025.04.05_all.deb
+
+      - name: Build loong64 iso image
+        run: |
           sudo bash -i ./build.sh --variant ${{ matrix.variant }}
-          
-            
+                 
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:

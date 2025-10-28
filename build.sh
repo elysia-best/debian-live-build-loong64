@@ -9,6 +9,7 @@ set -o pipefail # Bashism
 DEBIAN_DIST="sid"
 DEBIAN_VERSION="$(date +%Y%m%d)"
 DEBIAN_VARIANT="default"
+DEBIAN_ARCH="loong64"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""
 SUDO="sudo"
