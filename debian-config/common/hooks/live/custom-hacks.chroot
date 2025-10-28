@@ -47,6 +47,9 @@ do
     dpkg-reconfigure libdvd-pkg | true
 done
 
+# Remove qemu
+apt purge -y qemu-user
+
 # remove package list cache
 apt clean
 
