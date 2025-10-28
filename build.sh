@@ -229,7 +229,11 @@ if [ "$HOST_ARCH" != "$DEBIAN_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 	case "$HOST_ARCH/$DEBIAN_ARCH" in
 	amd64/i386 | i386/amd64) ;;
 	*)
-		DEBIAN_CONFIG_OPTS="$DEBIAN_CONFIG_OPTS --bootstrap-qemu-arch $DEBIAN_ARCH --bootstrap-qemu-static $(readlink -f /usr/bin/qemu-$DEBIAN_ARCH)"
+		QEMU_ARCH="$DEBIAN_ARCH"
+		if [ "$DEBIAN_ARCH" = "armhf" ]; then
+			QEMU_ARCH="loongarch64"
+		fi
+		DEBIAN_CONFIG_OPTS="$DEBIAN_CONFIG_OPTS --bootstrap-qemu-arch $QEMU_ARCH --bootstrap-qemu-static $(readlink -f /usr/bin/qemu-$QEMU_ARCH)"
 		echo "Building for $DEBIAN_ARCH on $HOST_ARCH"
 		;;
 	esac
