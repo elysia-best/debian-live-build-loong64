@@ -39,7 +39,6 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           sudo apt update
           sudo apt install qemu-user qemu-user-binfmt -y
-          sudo mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
           sudo systemctl start systemd-binfmt.service
 
       - name: Install build dependencies
