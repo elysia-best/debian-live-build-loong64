@@ -15,18 +15,21 @@ jobs:
     name: Build loong64 iso image
     runs-on: ubuntu-latest
     permissions: write-all
+    container:
+      image: debian:trixie-backports
+      options: --privileged --cpus=4
     strategy:
       matrix:
         variant:
           - kde
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 4096
-          swap-size-mb: 2048
-          remove-dotnet: 'true'
-          remove-android: 'true'
+      # - name: Maximize build space
+      #   uses: easimon/maximize-build-space@master
+      #   with:
+      #     root-reserve-mb: 4096
+      #     swap-size-mb: 2048
+      #     remove-dotnet: 'true'
+      #     remove-android: 'true'
 
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -37,32 +40,35 @@ jobs:
       - name: Set up loong64 QEMU
         run: |
           export DEBIAN_FRONTEND=noninteractive
-          sudo apt update
-          sudo apt install qemu-user qemu-user-binfmt binfmt-support -y
-          sudo systemctl start systemd-binfmt.service
-          sudo update-binfmts --enable qemu-loongarch64
+          apt update
+          apt install qemu-user qemu-user-binfmt binfmt-support curl -y
+          mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
+          curl -fsSL -o /usr/local/bin/systemctl-docker https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/refs/heads/master/files/docker/systemctl3.py
+          chmod +x /usr/local/bin/systemctl-docker
+          /usr/local/bin/systemctl-docker start systemd-binfmt.service
+          update-binfmts --enable qemu-loongarch64
 
       - name: Install build dependencies
         run: |
           export DEBIAN_FRONTEND=noninteractive
-          sudo apt update
-          sudo apt install git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+          apt update
+          apt install git sudo fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
 
           curl -fsSL https://salsa.debian.org/-/project/100777/uploads/c51d6e90dd42be715b7f0ee555f84a3a/live-build_20251022_all.deb -o live-build.deb
-          sudo apt install -y ./live-build.deb
+          apt install -y ./live-build.deb
           rm live-build.deb
 
           curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2025.1_all.deb -o debian-archive-keyring.deb
-          sudo apt install -y ./debian-archive-keyring.deb
+          apt install -y ./debian-archive-keyring.deb
           rm debian-archive-keyring.deb
 
           curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb -o debian-ports-archive-keyring.deb
-          sudo apt install -y ./debian-ports-archive-keyring.deb
+          apt install -y ./debian-ports-archive-keyring.deb
           rm debian-ports-archive-keyring.deb
 
       - name: Build loong64 iso image
         run: |
-          sudo bash -i ./build.sh --variant ${{ matrix.variant }}
+          bash -i ./build.sh --variant ${{ matrix.variant }}
                  
       - name: Artifact
         uses: actions/upload-artifact@v4
