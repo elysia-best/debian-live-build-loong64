@@ -34,6 +34,7 @@ jobs:
       - name: Install Deps
         run: |
           sed -i 's/deb.debian.org/mirror.sjtu.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+          sed -i 's/https/https/g' /etc/apt/sources.list.d/debian.sources
           apt update; 
           apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
           git config --global --add safe.directory /work
