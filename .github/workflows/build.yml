@@ -14,7 +14,9 @@ jobs:
   debian:
     name: Build loong64 iso image
     runs-on: self-hosted
-    container: ghcr.io/loong64/debian:trixie
+    container: 
+      image: ghcr.io/loong64/debian:trixie
+      options: --cpus=2 --platform linux/loong64 --privileged
     permissions: write-all
     strategy:
       matrix:
@@ -44,7 +46,7 @@ jobs:
           curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
           apt install -y ./live-build.deb
           rm live-build.deb
-          
+
       - name: Build
         run: |
           bash -i ./build.sh --variant ${{ matrix.variant }}
