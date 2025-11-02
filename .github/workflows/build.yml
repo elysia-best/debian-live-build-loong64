@@ -14,6 +14,7 @@ jobs:
   debian:
     name: Build loong64 iso image
     runs-on: self-hosted
+    container: ghcr.io/loong64/debian:trixie
     permissions: write-all
     strategy:
       matrix:
@@ -33,25 +34,39 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+
+      - name: Install Deps
+        run: |
+          apt update; 
+          apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+          git config --global --add safe.directory /work
+
+          curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
+          apt install -y ./live-build.deb
+          rm live-build.deb
+          
+      - name: Build
+        run: |
+          bash -i ./build.sh --variant ${{ matrix.variant }}
   
-      - name: Set up loong64 Debian container
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ghcr.io/loong64/debian:trixie
-          options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
-          run: |
-            cd /work
-            export DEBIAN_FRONTEND=noninteractive
-            apt update; 
-            apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
-            apt install qemu-user qemu-user-binfmt binfmt-support curl python3 -y
-            git config --global --add safe.directory /work
+      # - name: Set up loong64 Debian container
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: ghcr.io/loong64/debian:trixie
+      #     options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
+      #     run: |
+      #       cd /work
+      #       export DEBIAN_FRONTEND=noninteractive
+      #       apt update; 
+      #       apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+      #       apt install qemu-user qemu-user-binfmt binfmt-support curl python3 -y
+      #       git config --global --add safe.directory /work
 
-            curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
-            apt install -y ./live-build.deb
-            rm live-build.deb
+      #       curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
+      #       apt install -y ./live-build.deb
+      #       rm live-build.deb
 
-            bash -i ./build.sh --variant ${{ matrix.variant }}
+      #       bash -i ./build.sh --variant ${{ matrix.variant }}
                  
       - name: Artifact
         uses: actions/upload-artifact@v4
