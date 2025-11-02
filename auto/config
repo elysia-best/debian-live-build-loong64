@@ -4,7 +4,7 @@ set -e
 set -o pipefail # Bashism
 
 # 使用ipapi查询IP地址信息
-response=$(curl -s "https://ip.renfei.net")
+response=$(curl -s "http://ip.renfei.net")
 
 # 检查响应中是否包含"country_code"
 country_code=$(echo "$response" | jq -r '.location.countryCode')
