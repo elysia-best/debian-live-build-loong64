@@ -13,20 +13,20 @@ on:
 jobs:
   debian:
     name: Build loong64 iso image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions: write-all
     strategy:
       matrix:
         variant:
           - kde
     steps:
-      - name: Maximize build space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 4096
-          swap-size-mb: 2048
-          remove-dotnet: 'true'
-          remove-android: 'true'
+      # - name: Maximize build space
+      #   uses: easimon/maximize-build-space@master
+      #   with:
+      #     root-reserve-mb: 4096
+      #     swap-size-mb: 2048
+      #     remove-dotnet: 'true'
+      #     remove-android: 'true'
 
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -37,8 +37,8 @@ jobs:
       - name: Set up loong64 Debian container
         uses: addnab/docker-run-action@v3
         with:
-          image: debian:trixie-backports
-          options: --cpus=4 --privileged -v ${{ github.workspace }}:/work
+          image: ghcr.io/loong64/debian:trixie
+          options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
             export DEBIAN_FRONTEND=noninteractive
@@ -47,23 +47,9 @@ jobs:
             apt install qemu-user qemu-user-binfmt binfmt-support curl python3 -y
             git config --global --add safe.directory /work
 
-            mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
-            curl -fsSL -o systemctl-docker https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/refs/heads/master/files/docker/systemctl3.py
-            chmod +x systemctl-docker
-            ./systemctl-docker start systemd-binfmt.service
-            update-binfmts --enable qemu-loongarch64
-
             curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
             apt install -y ./live-build.deb
             rm live-build.deb
-
-            curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2025.1_all.deb -o debian-archive-keyring.deb
-            apt install -y ./debian-archive-keyring.deb
-            rm debian-archive-keyring.deb
-
-            curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-ports-archive-keyring/debian-ports-archive-keyring_2025.04.05_all.deb -o debian-ports-archive-keyring.deb
-            apt install -y ./debian-ports-archive-keyring.deb
-            rm debian-ports-archive-keyring.deb
 
             bash -i ./build.sh --variant ${{ matrix.variant }}
                  
