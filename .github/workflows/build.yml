@@ -42,6 +42,8 @@ jobs:
           apt install -y ./live-build.deb
           rm live-build.deb
 
+          git config --system url."http://gh.llkk.cc/https://github.com".insteadOf https://github.com
+
       - name: Checkout sources
         uses: actions/checkout@v4
         with:
