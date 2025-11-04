@@ -33,6 +33,10 @@ sudo bash ./build.sh
 
 Built images will be in `./images/`.
 
+# Sponsor
+
+If you like this project, you can sponsor me on [buymeacoffee](https://buymeacoffee.com/elysia.best) with any amount you want.
+
 # License
 
 This project is licensed under the Attribution-ShareAlike 4.0 International.
