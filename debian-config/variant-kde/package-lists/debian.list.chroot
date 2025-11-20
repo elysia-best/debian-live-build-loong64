@@ -45,8 +45,11 @@ fonts-noto-cjk
 
 # liblol
 # If not using kernel from AOSC, you need to install liblol-dkms
-liblol-dkms
-liblol
+# https://github.com/AOSC-Dev/liblol/issues/22
+# liblol is broken on Debian SID right now. Uncomment them untill
+# the issue is fixed.
+# liblol-dkms
+# liblol
 
 # lat
 latx-amd64
