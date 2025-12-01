@@ -47,6 +47,9 @@ do
     dpkg-reconfigure libdvd-pkg | true
 done
 
+# install loonggpu drivers 
+apt install -y loonggpu-driver
+
 # remove package list cache
 apt clean
 
