@@ -42,8 +42,8 @@ fonts-noto-cjk
 # liblol
 
 # lat
-latx-amd64
-latx-i386
+# latx-amd64
+# latx-i386
 
 # Disk
 gparted
