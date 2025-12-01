@@ -41,12 +41,6 @@ fonts-noto-cjk
 # liblol-dkms
 # liblol
 
-# loonggpu
-firmware-loongson-graphics
-loonggl
-loonggpu-kernel-dkms
-loonggpu-driver
-
 # lat
 latx-amd64
 latx-i386
