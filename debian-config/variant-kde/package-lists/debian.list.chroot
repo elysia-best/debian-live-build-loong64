@@ -1,14 +1,4 @@
 # Live image
-# You always want these:
-# lingmo-linux-core
-# lingmo-desktop-live
-
-# Metapackages
-# You can customize the set of Lingmo metapackages (groups of tools) to install
-# For the complete list see: https://tools.lingmo.org/lingmo-metapackages
-
-# Core Packages
-# lingmo-base-files
 
 ftp
 openssh-client
@@ -52,6 +42,9 @@ fonts-noto-cjk
 # liblol
 
 # loonggpu
+firmware-loongson-graphics
+loonggl
+loonggpu-kernel-dkms
 loonggpu-driver
 
 # lat
