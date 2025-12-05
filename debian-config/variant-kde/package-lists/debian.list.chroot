@@ -19,8 +19,12 @@ calamares-settings-debian-loong
 plymouth
 
 # Web applications
-firefox
-firefox-l10n-zh-cn
+#Alt: firefox
+#Alt: firefox-l10n-zh-cn
+chromium
+chromium-l10n
+chromium-sandbox
+
 
 # Input Methods
 fcitx5

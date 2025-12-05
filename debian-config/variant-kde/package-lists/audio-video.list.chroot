@@ -169,9 +169,10 @@ media-player-info
 
 #Section: Audio recording/editing
 #Description: audacity
-#Description: gnome-sound-recorder
+#Description: krecorder
 audacity
-gnome-sound-recorder
+krecorder
+#Alt: gnome-sound-recorder
 #Alt: gwc
 #Alt: gjacktransport
 
