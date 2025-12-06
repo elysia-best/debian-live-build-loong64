@@ -25,6 +25,8 @@ kde-config-sddm
 kde-config-updates	
 
 plasma-welcome
+# This is needed for plasma-welcome to work
+qml6-module-qtnetwork
 
 sddm-theme-breeze	
 sddm-theme-debian-breeze	
