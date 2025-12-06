@@ -36,7 +36,7 @@ do
     apt-mark hold $pkg | true
 done
 
-for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'grub-efi-loong64-*' | sed -ne 's/^installed //p')
+for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'grub-efi-loong64*' | sed -ne 's/^installed //p')
 do
     apt-mark hold $pkg | true
 done

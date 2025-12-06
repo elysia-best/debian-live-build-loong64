@@ -3,3 +3,8 @@
 # Copy the bootloader for the old world
 
 cp -v EFI/boot/bootloongarch64.efi EFI/boot/bootloongarch.efi
+
+# Make a all upper case copy of the bootloader
+mkdir -pv EFI/BOOT
+cp -v EFI/boot/bootloongarch64.efi EFI/BOOT/BOOTLOONGARCH64.EFI
+cp -v EFI/boot/bootloongarch64.efi EFI/BOOT/BOOTLOONGARCH.EFI
