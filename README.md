@@ -14,7 +14,7 @@ Have a look at [Debian Live Manual](https://live-team.pages.debian.net/live-manu
 ## Install dependencies
 
 ```bash
-sudo apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+sudo apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl libxml2-utils -y
 curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
 sudo apt install -y ./live-build.deb
 rm live-build.deb

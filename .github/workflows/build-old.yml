@@ -47,7 +47,7 @@ jobs:
           options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl jq -y
+            apt update; apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl	libxml2-utils -y
             git config --global --add safe.directory /work
             export DEBIAN_FRONTEND=noninteractive
             curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
