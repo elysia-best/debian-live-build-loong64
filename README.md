@@ -1,3 +1,8 @@
+
+<div align="center">
+  <img src="./static/logo.png" alt="logo" width="150" height="150">
+</div>
+
 # live-build configuration for Debian loong64 images
 
 Total downloads：![](https://gh-down-badges.linkof.link/elysia-best/debian-live-build-loong64)
