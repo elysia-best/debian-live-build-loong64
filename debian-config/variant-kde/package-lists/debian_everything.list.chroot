@@ -24,7 +24,10 @@ krita-l10n
 inkscape
 
 # 3D Modelling
-blender
+# Blender is facing a dependency issue on Debian
+# Readd until https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1115049
+# is fixed
+# blender
 
 # Archiver
 ark
