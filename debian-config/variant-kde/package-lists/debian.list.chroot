@@ -21,9 +21,9 @@ plymouth
 # Web applications
 #Alt: firefox
 #Alt: firefox-l10n-zh-cn
-chromium
-chromium-l10n
-chromium-sandbox
+# chromium
+# chromium-l10n
+# chromium-sandbox
 
 
 # Input Methods
