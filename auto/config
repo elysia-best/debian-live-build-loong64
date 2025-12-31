@@ -106,17 +106,17 @@ case "$arch" in
 	loong64)
 	lb_opts="$lb_opts --bootloaders grub-efi --uefi-secure-boot disable"
 	if [ "$country_code" == "CN" ]; then
-		public_debian_mirror=https://mirrors.aliyun.com/debian-ports
-		debian_mirror=https://mirrors.aliyun.com/debian-ports
+		public_debian_mirror=https://loong13.debian.net/debian-loong64
+		debian_mirror=https://loong13.debian.net/debian-loong64	
 		# public_debian_mirror=https://snapshot.debian.org/archive/debian-ports/20251025T135353Z
 		# debian_mirror=https://snapshot.debian.org/archive/debian-ports/20251025T135353Z
 	else
-		public_debian_mirror=http://deb.debian.org/debian-ports
-		debian_mirror=http://deb.debian.org/debian-ports		
+		public_debian_mirror=https://loong13.debian.net/debian-loong64
+		debian_mirror=https://loong13.debian.net/debian-loong64	
 		# public_debian_mirror=https://snapshot.debian.org/archive/debian-ports/20251025T135353Z
 		# debian_mirror=https://snapshot.debian.org/archive/debian-ports/20251025T135353Z
 	fi
-	debian_keyring="/usr/share/keyrings/debian-ports-archive-keyring.gpg"
+	debian_keyring="$(cd "$(dirname $0)";pwd)/../static/debian-trixie-loong64.gpg"
 	;;
     *)
 	echo "WARNING: configuration not tested on arch $arch" >&2
