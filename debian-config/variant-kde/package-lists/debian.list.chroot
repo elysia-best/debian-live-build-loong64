@@ -13,6 +13,9 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 htop
 
+wget
+curl
+
 # Live apps configs
 calamares-settings-debian-loong
 

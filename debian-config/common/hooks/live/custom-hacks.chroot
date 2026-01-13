@@ -27,7 +27,11 @@ if [ -x "$(which updatedb 2>/dev/null)" ]; then
 fi
 
 # Make sure the our custom grub is installed
-apt install -y grub-efi-loong64=2.12-7deepin3 grub-efi-loong64-bin=2.12-7deepin3 grub-efi-loong64-unsigned=2.12-7deepin3
+wget -O /tmp/grub-efi-loong64.deb https://pkg.loongnix.cn/loongnix/25/pool/main/g/grub2/grub-efi-loong64_2.12-9_loong64.deb
+wget -O /tmp/grub-efi-loong64-bin.deb https://pkg.loongnix.cn/loongnix/25/pool/main/g/grub2/grub-efi-loong64-bin_2.12-9_loong64.deb
+wget -O /tmp/grub-efi-loong64-unsigned.deb https://pkg.loongnix.cn/loongnix/25/pool/main/g/grub2/grub-efi-loong64-unsigned_2.12-9_loong64.deb
+dpkg -i /tmp/grub-efi-loong64.deb /tmp/grub-efi-loong64-bin.deb /tmp/grub-efi-loong64-unsigned.deb
+rm -f /tmp/grub-efi-loong64.deb /tmp/grub-efi-loong64-bin.deb /tmp/grub-efi-loong64-unsigned.deb
 
 # Mark kernel related packages on hold so that they are not upgraded in
 # the live system
