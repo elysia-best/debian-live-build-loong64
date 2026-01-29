@@ -4,6 +4,7 @@ eatmydata
 # ensure some packages installed by base-installer/post-base-installer.d/*
 # hooks are available
 sudo
+pkexec
 locales
 pciutils
 usbutils
@@ -58,7 +59,9 @@ packagekit
 # OpenSSH
 openssh-server
 
+# Time Sync
+systemd-timesyncd
+
 # Time tools
 util-linux-extra
 
-pkexec
