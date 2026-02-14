@@ -26,7 +26,6 @@ exfatprogs
 exfat-fuse
 xfsprogs
 btrfs-progs
-reiserfsprogs
 f2fs-tools
 jfsutils
 xfsprogs

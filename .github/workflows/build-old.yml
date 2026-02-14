@@ -20,23 +20,20 @@ jobs:
         variant:
           - kde
     steps:
-      # - name: Maximize build space
-      #   uses: easimon/maximize-build-space@master
-      #   with:
-      #     root-reserve-mb: 4096
-      #     swap-size-mb: 2048
-      #     remove-dotnet: 'true'
-      #     remove-android: 'true'
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 10240
+          swap-size-mb: 2048
+          remove-dotnet: 'true'
+          remove-android: 'true'
 
       - name: Checkout sources
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
-
-      - name: Set up Docker
-        uses: docker/setup-docker-action@v4
-
+          
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v3
 
