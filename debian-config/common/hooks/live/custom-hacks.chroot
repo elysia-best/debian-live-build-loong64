@@ -48,7 +48,8 @@ do
 done
 
 # install loonggpu drivers 
-apt install -y loonggpu-driver
+# Not working in live-build process yet, sad
+# apt install -y loonggpu-driver
 
 # remove package list cache
 apt clean
