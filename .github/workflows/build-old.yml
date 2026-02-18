@@ -35,7 +35,7 @@ jobs:
       - name: Set up loong64 Debian container
         uses: maus007/docker-run-action-fork@5ddaad0f7eedd03f64e412b1931852bd3031b273
         with:
-          image: ghcr.io/loong64/loongnix:25
+          image: linuxdeepin/deepin:crimson-loong64
           options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
