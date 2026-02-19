@@ -15,7 +15,7 @@ if [ -e .mirror ]; then
     debian_mirror=$(cat .mirror)
 else
 	if [ "$country_code" == "CN" ]; then
-		debian_mirror=http://mirrors.aliyun.com/debian
+		debian_mirror=http://mirrors.ustc.edu.cn/debian
 	else
 	    debian_mirror=http://ftp.debian.org/debian
 	fi
@@ -24,7 +24,7 @@ fi
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
 if [ "$country_code" == "CN" ]; then
-	public_debian_mirror=http://mirrors.aliyun.com/debian
+	public_debian_mirror=http://mirrors.ustc.edu.cn/debian
 else
 	public_debian_mirror=http://ftp.debian.org/debian
 fi
