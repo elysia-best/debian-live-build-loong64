@@ -4,11 +4,11 @@ permissions: write-all
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "trixie-loong13" ]
   pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: "30 4 * * *"
+    branches: [ "trixie-loong13" ]
+  # schedule:
+  #   - cron: "30 4 * * *"
   workflow_dispatch:
 jobs:
   debian:
