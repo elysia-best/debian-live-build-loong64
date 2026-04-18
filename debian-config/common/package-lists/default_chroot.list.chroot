@@ -56,7 +56,8 @@ dbus
 packagekit
 
 # OpenSSH
-openssh-server
+# For security reason, better no to install ssh server by default
+# openssh-server
 
 # Time tools
 util-linux-extra

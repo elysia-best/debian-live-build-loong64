@@ -6,13 +6,11 @@ plasma-discover
 qml-module-org-kde-purpose
 
 # Office
-# libreoffice
-# libreoffice-l10n-zh-cn
-# Use OnlyOffice now
+libreoffice
+libreoffice-l10n-zh-cn
 
 # Video
-vlc
-vlc-l10n
+dragonplayer
 
 # Email
 # thunderbird
@@ -27,7 +25,7 @@ inkscape
 # Blender is facing a dependency issue on Debian
 # Readd until https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1115049
 # is fixed
-# blender
+blender
 
 # Archiver
 ark
