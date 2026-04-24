@@ -38,6 +38,8 @@ jobs:
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v4
+        with:
+          platforms: loong64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -58,7 +60,7 @@ jobs:
             bash -i ./build.sh --variant ${{ matrix.variant }}
 
       - name: Calculate checksum
-        run: sudo sha256sum ${{ github.workspace }}/images/*.iso > ${{ github.workspace }}/images/sha256sum.txt
+        run: sudo bash -c "sha256sum ${{ github.workspace }}/images/*.iso > ${{ github.workspace }}/images/sha256sum.txt"
             
       - name: Artifact
         uses: actions/upload-artifact@v7
