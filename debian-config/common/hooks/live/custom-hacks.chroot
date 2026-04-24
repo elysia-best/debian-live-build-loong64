@@ -16,6 +16,15 @@ if [ -e /etc/cryptsetup-initramfs/conf-hook ]; then
     fi
 fi
 
+# Add necessary kernel moduales to the initramfs
+# vfat
+# nls_cp437
+# nls_iso8859-1
+# squashfs
+for mod in vfat nls_cp437 nls_iso8859-1 squashfs; do
+    grep -qw "$mod" /etc/initramfs-tools/modules || echo "$mod" | tee -a /etc/initramfs-tools/modules >/dev/null
+done
+
 # Rebuild the initramfs to include the last change
 export kversion=`cd /boot && ls -1 vmlinuz-* | tail -1 | sed 's@vmlinuz-@@'`
 depmod -a $kversion
