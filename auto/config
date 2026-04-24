@@ -175,8 +175,8 @@ lb config noauto \
 	--mirror-binary "$public_debian_mirror" \
 	--iso-application "Debian Live" \
 	--iso-publisher "Elysia" \
-	--linux-packages "linux-image-6.17.7 linux-headers-6.17.7" \
-	--linux-flavours "aosc-main-16k-g569e8d33f9fc" \
+	--linux-packages "linux-image-6.18.16 linux-headers-6.18.16" \
+	--linux-flavours "aosc-main-16k-g277276f53053" \
 	--memtest none \
 	--bootappend-live "boot=live components quiet splash noeject live-config.locales=\"zh_CN.UTF-8\"" \
 	--bootappend-live-failsafe "boot=live components noeject memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal live-config.locales=\"zh_CN.UTF-8\"" \

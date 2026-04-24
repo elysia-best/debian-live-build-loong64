@@ -23,25 +23,27 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
-          root-reserve-mb: 4096
-          swap-size-mb: 2048
+          root-reserve-mb: 10240
+          swap-size-mb: 512
           remove-dotnet: 'true'
           remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
 
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
       - name: Setup QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Set up loong64 Debian container
-        uses: addnab/docker-run-action@v3
+        uses: maus007/docker-run-action-fork@5ddaad0f7eedd03f64e412b1931852bd3031b273
         with:
           image: ghcr.io/loong64/debian:trixie
           options: --cpus=4 --platform linux/loong64 --privileged -v ${{ github.workspace }}:/work
@@ -54,12 +56,16 @@ jobs:
             apt install -y ./live-build.deb
             rm live-build.deb
             bash -i ./build.sh --variant ${{ matrix.variant }}
-            
+
+      - name: Calculate checksum
+        run: sudo sha256sum ${{ github.workspace }}/images/*.iso > ${{ github.workspace }}/images/sha256sum.txt
             
       - name: Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Debian loong64 live cd ${{ matrix.variant }}
-          path: ${{ github.workspace }}/images/*.iso
+          path: |
+            ${{ github.workspace }}/images/*.iso
+            ${{ github.workspace }}/images/sha256sum.txt
           compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
