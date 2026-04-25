@@ -40,9 +40,7 @@ jobs:
         uses: docker/setup-qemu-action@v4
         with:
           platforms: loong64
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+          cache-image: false
 
       - name: Set up loong64 Debian container
         uses: maus007/docker-run-action-fork@5ddaad0f7eedd03f64e412b1931852bd3031b273
