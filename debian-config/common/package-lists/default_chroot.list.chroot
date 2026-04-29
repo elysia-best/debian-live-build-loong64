@@ -63,3 +63,6 @@ packagekit
 util-linux-extra
 
 pkexec
+
+# Memory Test
+memtest86+
