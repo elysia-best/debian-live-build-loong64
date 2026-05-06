@@ -17,6 +17,8 @@ curl
 
 # Live apps configs
 calamares-settings-debian
+# calamares's password checking need this
+libpwquality-tools
 
 plymouth
 
