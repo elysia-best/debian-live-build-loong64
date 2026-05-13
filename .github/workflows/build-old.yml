@@ -4,11 +4,11 @@ permissions: write-all
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "trixie-loong13" ]
   pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: "30 4 * * *"
+    branches: [ "trixie-loong13" ]
+  # schedule:
+  #   - cron: "30 4 * * *"
   workflow_dispatch:
 jobs:
   debian:
@@ -20,17 +20,27 @@ jobs:
         variant:
           - kde
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 10240
+          swap-size-mb: 512
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
       - name: Setup QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-qemu-action@v4
+        with:
+          platforms: loong64
+          cache-image: false
 
       - name: Set up loong64 Debian container
         uses: maus007/docker-run-action-fork@5ddaad0f7eedd03f64e412b1931852bd3031b273
@@ -42,19 +52,24 @@ jobs:
             apt update; apt install sudo git fakeroot debootstrap debian-cd simple-cdd xorriso squashfs-tools mtools curl	libxml2-utils -y
             git config --global --add safe.directory /work
             export DEBIAN_FRONTEND=noninteractive
-            curl -fsSL https://salsa.debian.org/-/project/100777/uploads/67ffd6906e0fd6ea39607917e8f78655/live-build_20251022_all.deb -o live-build.deb
+            curl -fsSL https://salsa.debian.org/-/project/100777/uploads/fb276fc2989139787acb2be17667ee76/live-build_20260430+salsaci+20260430+13_all.deb -o live-build.deb
             apt install -y ./live-build.deb
             rm live-build.deb
             curl -fsSL http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2025.1_all.deb -o debian-archive-keyring.deb
             apt install -y ./debian-archive-keyring.deb
             rm debian-archive-keyring.deb
             bash -i ./build.sh --variant ${{ matrix.variant }}
-            
+
+      - name: Calculate checksum
+        run: sudo bash -c "sha256sum ${{ github.workspace }}/images/*.iso > ${{ github.workspace }}/images/sha256sum.txt"
             
       - name: Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Debian loong64 live cd ${{ matrix.variant }}
-          path: ${{ github.workspace }}/images/*.iso
+          path: |
+            ${{ github.workspace }}/images/*.iso
+            ${{ github.workspace }}/images/sha256sum.txt
           compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+

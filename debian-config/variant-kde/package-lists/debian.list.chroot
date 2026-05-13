@@ -2,7 +2,6 @@
 
 ftp
 openssh-client
-openssh-server
 parted
 sudo
 tasksel
@@ -13,17 +12,23 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 htop
 
+wget
+curl
+
 # Live apps configs
 calamares-settings-debian
+# calamares's password checking need this
+libpwquality-tools
 
 plymouth
 
 # Web applications
 #Alt: firefox
 #Alt: firefox-l10n-zh-cn
-chromium
-chromium-l10n
-chromium-sandbox
+# chromium
+# chromium-l10n
+# chromium-sandbox
+lbrowser
 
 
 # Input Methods
@@ -51,3 +56,4 @@ fonts-noto-cjk
 
 # Disk
 gparted
+

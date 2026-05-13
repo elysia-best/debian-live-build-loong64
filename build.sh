@@ -6,7 +6,7 @@ set -e
 set -o pipefail # Bashism
 
 # Lingmo's default values
-DEBIAN_DIST="sid"
+DEBIAN_DIST="trixie"
 DEBIAN_VERSION="$(date +%Y%m%d)"
 DEBIAN_VARIANT="default"
 DEBIAN_ARCH="loong64"
