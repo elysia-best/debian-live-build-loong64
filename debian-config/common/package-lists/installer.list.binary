@@ -1,4 +1,8 @@
-# These packages are required by the installer to install the system in UEFIM boot mode
+# EFI/UEFI boot support (binary stage)
+# These packages are put on the ISO image itself so the live system
+# can boot in UEFI mode. See efi-support.list.chroot for the
+# equivalent packages installed into the target system by the installer.
+
 #if ARCHITECTURES i386
 grub-efi-ia32-bin
 grub-efi-ia332
@@ -20,11 +24,10 @@ shim-signed-common
 shim-signed
 #endif
 #if ARCHITECTURES loong64
-grub-efi-loong64-bin=2.12-7deepin3 
+grub-efi-loong64-bin=2.12-7deepin3
 grub-efi-loong64=2.12-7deepin3
 grub-efi-loong64-unsigned=2.12-7deepin3
 mokutil
-#endif 
+#endif
 
 efibootmgr
-

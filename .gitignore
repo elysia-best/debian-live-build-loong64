@@ -10,6 +10,9 @@
 /simple-cdd/images/*
 /simple-cdd/tmp/*
 
+# Agent dirs
+/.reasonix/*
+
 # Files
 .mirror
 binary.modified_timestamps

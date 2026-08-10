@@ -1,0 +1,86 @@
+# Debian live image extras (KDE variant)
+# General-purpose tools, localization and desktop applications
+# on top of the KDE desktop.
+
+# Terminal & shell utilities
+tmux
+vim
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+htop
+
+# Network clients
+ftp
+openssh-client
+
+# Disk & partitioning tools
+parted
+gparted
+
+# Live installer configuration
+calamares-settings-debian
+# calamares's password checking needs this
+libpwquality-tools
+
+# Boot splash
+plymouth
+
+# Web browser
+lbrowser
+#Alt: firefox
+#Alt: firefox-l10n-zh-cn
+# chromium
+# chromium-l10n
+# chromium-sandbox
+
+# Input methods (fcitx5, CJK)
+fcitx5
+fcitx5-chinese-addons
+fcitx5-module-cloudpinyin
+fcitx5-frontend-gtk2
+fcitx5-frontend-gtk3
+fcitx5-frontend-gtk4
+
+# CJK fonts
+fonts-noto-cjk
+
+# liblol (AOSC kernel helper)
+# If not using the kernel from AOSC, you need to install liblol-dkms.
+# https://github.com/AOSC-Dev/liblol/issues/22
+# liblol is broken on Debian SID right now; keep these commented out
+# until the issue is fixed.
+# liblol-dkms
+# liblol
+
+# LAT (LoongArch translation layer)
+# latx-amd64
+# latx-i386
+
+# App Store
+packagekit-tools
+plasma-discover
+qml-module-org-kde-purpose
+
+# Office
+libreoffice
+libreoffice-l10n-zh-cn
+
+# Video
+dragonplayer
+
+# Email
+# thunderbird
+# thunderbird-l10n-zh-cn
+
+# Graphics & drawing
+krita
+krita-l10n
+inkscape
+
+# 3D modelling
+# Blender is only available on Debian 14 or later for loong64.
+# blender
+
+# Archiver
+ark

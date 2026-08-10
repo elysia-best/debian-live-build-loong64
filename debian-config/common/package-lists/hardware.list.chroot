@@ -1,7 +1,10 @@
+# Hardware support packages
+# Firmware, drivers and related tools for the live image.
+
 ##
-## The b43 firmware require network access, hence are not dependencies of
-## lingmo-linux-firmware. But we install those in the live image anyway,
-## since we have network access when we build the live ISO.
+## The b43 firmware requires network access, hence they are not
+## dependencies of lingmo-linux-firmware. But we install them in the
+## live image anyway, since we have network access while building.
 ##
 firmware-linux-nonfree
 firmware-linux
@@ -11,18 +14,16 @@ firmware-b43-installer
 #endif
 
 ##
-## Make sure we install as many input/video drivers as we can. Note that
-## these packages need to be explicitly listed if we want to be sure that
-## they're installed. Installing xserver-xorg is not enough to make sure,
-## due to its dependencies, defined as such:
-##  * xserver-xorg-input-all | xorg-driver-input
-##  * xserver-xorg-video-all | xorg-driver-video
+## Install as many input/video drivers as we can. These packages need
+## to be explicitly listed to be sure they are installed, because
+## installing xserver-xorg alone is not enough (its dependencies are:
+##   * xserver-xorg-input-all | xorg-driver-input
+##   * xserver-xorg-video-all | xorg-driver-video
 ##
 xserver-xorg-input-all
 xserver-xorg-video-all
 
-
-## linux-firmware
+# linux-firmware
 bluez-firmware
 firmware-amd-graphics
 firmware-ath9k-htc
@@ -31,7 +32,6 @@ firmware-brcm80211
 firmware-intel-sound
 firmware-iwlwifi
 firmware-libertas
-firmware-linux
 firmware-misc-nonfree
 firmware-sof-signed
 firmware-ti-connectivity
@@ -44,16 +44,13 @@ broadcom-sta-dkms
 # Initramfs
 initramfs-tools
 
-#Section: Wireless
-#Description: bluedevil
-bluedevil
+# Wireless
 bluetooth
 bluez
 wireless-regdb
 wireless-tools
 
-#Section: Firewall
-#Description: gufw
+# Firewall
 ufw
 gufw
 iptables
@@ -65,19 +62,16 @@ iptables
 #Alt: crowdsec
 #Alt: opensnitch
 
-#Section: Live system components
-live-boot
+# Live system components (live-boot/live-config live in default_chroot.list.chroot)
 live-boot-doc
-live-config
 live-config-doc
 live-config-systemd
 live-task-localisation
 live-task-recommended
 user-setup
 live-tools
-eject
 #Alt: installation-birthday
 
-# Compress
+# Compression tools
 zstd
 xz-utils

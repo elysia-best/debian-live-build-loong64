@@ -183,9 +183,7 @@ krecorder
 #Section: Audio system
 #Description: pulseaudio
 pavucontrol
-pulseaudio
 pulseaudio-utils
-pulseaudio-module-bluetooth
 pulseaudio-module-lirc
 #Alt: pulseaudio-module-zeroconf
 pulseaudio-module-jack

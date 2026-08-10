@@ -1,48 +1,52 @@
-# Graphical desktops
+# KDE Plasma desktop (KDE variant)
+# Core desktop, session, appearance and KDE integration packages.
+
+# Core desktop & welcome
 task-kde-desktop
-sddm
-kinfocenter
-konsole
-kate
-plasma-systemmonitor
-
-# For display settings
-kscreen
-# For bluetooth
-bluedevil
-
-kwin-x11
-kwin-wayland
-
-qml6-module-org-kde-networkmanager
-qml6-module-org-kde-bluezqt
-
-kde-config-fcitx	
-kde-config-fcitx5	
-kde-config-gtk-style
-kde-config-screenlocker
-kde-config-sddm	
-kde-config-updates	
-
 plasma-welcome
 # This is needed for plasma-welcome to work
 qml6-module-qtnetwork
 
-sddm-theme-breeze	
-sddm-theme-debian-breeze	
+# Display server & session management
+sddm
+sddm-theme-breeze
+sddm-theme-debian-breeze
+kde-config-sddm
+kde-config-screenlocker
+kscreen
+kwin-x11
+kwin-wayland
 
+# Appearance
 kde-style-breeze
 kde-style-breeze-qt5
 breeze-gtk-theme
 
-extra-xdg-menus
-kdenetwork-filesharing
-desktop-file-utils
-kio-extras
+# System utilities
+kinfocenter
+konsole
+kate
+plasma-systemmonitor
+kde-config-updates
 print-manager
+
+# Networking & file sharing
+qml6-module-org-kde-networkmanager
+kdenetwork-filesharing
+kio-extras
+desktop-file-utils
+extra-xdg-menus
+
+# Bluetooth
+bluedevil
+qml6-module-org-kde-bluezqt
+
+# Input method integration (fcitx)
+kde-config-fcitx
+kde-config-fcitx5
+kde-config-gtk-style
+
+# Desktop integration / misc
 xdg-desktop-portal-kde
 colord-kde
 kde-config-tablet
-
-
-

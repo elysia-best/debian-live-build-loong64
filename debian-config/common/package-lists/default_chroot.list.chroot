@@ -1,8 +1,11 @@
-# ensure eatmydata is available for eatmydata.udeb
+# Default live system packages
+# Installed in the chroot stage; these are the base packages every
+# image variant gets, on top of the "required/important" priorities.
+
+# eatmydata: required by the eatmydata.udeb used in base-installer
 eatmydata
 
-# ensure some packages installed by base-installer/post-base-installer.d/*
-# hooks are available
+# Packages needed by base-installer/post-base-installer.d/* hooks
 sudo
 locales
 pciutils
@@ -10,10 +13,10 @@ usbutils
 eject
 tasksel
 
-# For GRUB for EFI
+# EFI boot support (for GRUB on EFI systems)
 efibootmgr
 
-# Live configs
+# Live system boot/config scripts
 live-boot
 live-config
 
@@ -28,41 +31,37 @@ btrfs-progs
 reiserfsprogs
 f2fs-tools
 jfsutils
-xfsprogs
 squashfs-tools
 
-# rsync tools
-rsync 
+# Synchronization tools
+rsync
 
-# Disk Encryption
+# Disk encryption
 cryptsetup
 
-# bluetooth
-bluez
-pulseaudio-module-bluetooth
+# Audio (bluez lives in hardware.list.chroot)
 pulseaudio
+pulseaudio-module-bluetooth
 
-# network
+# Network management
 network-manager
 network-manager-l10n
 
-# WLAN
-hostapd
-wpagui
+# Wireless (WPA client + access point)
 wpasupplicant
+hostapd
 dbus
 
 # Package management
 packagekit
 
 # OpenSSH
-# For security reason, better no to install ssh server by default
+# For security reasons, the SSH server is NOT installed by default
 # openssh-server
 
-# Time tools
+# System utilities
 util-linux-extra
-
 pkexec
 
-# Memory Test
+# Memory testing
 memtest86+
