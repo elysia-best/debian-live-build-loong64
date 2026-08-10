@@ -52,7 +52,6 @@ wireless-tools
 
 # Firewall
 ufw
-gufw
 iptables
 #Alt: ferm
 #Alt: iptables-persistent
