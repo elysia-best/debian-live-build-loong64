@@ -11,9 +11,10 @@ Have a look at [Debian Live Manual](https://live-team.pages.debian.net/live-manu
 
 # Download prebuilt images
 
-**Nightly Builds**: Download the latest prebuilt image from [here](https://nightly.link/elysia-best/debian-live-build-loong/workflows/build/master/Debian%20loong64%20live%20cd.zip).
+1. SourceForge： <https://sourceforge.net/projects/elysia-loongarch-debian/files/iso/>
+2. My OpenList Netdisk(For CN users/推荐中国大陆用户使用)： <https://opensrc.qinyn.eu.org/lanzou/loongarch64/iso>
+3. Github Release Page: Due to gh size limit, no longer upload iso to gh release.
 
-**Latest Release**: See the release page for details.
 # Build images
 
 ## Install dependencies
